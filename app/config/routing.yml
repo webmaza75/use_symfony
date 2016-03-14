@@ -1,3 +1,8 @@
+ir_blog:
+    resource: "@IrBlogBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
