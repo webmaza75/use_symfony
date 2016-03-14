@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block path %}<a class="btn btn-primary" href="{{ path('category_index') }}">К списку категорий</a>{% endblock %}
+{% block body %}
+    <h1>Создание категории</h1>
+
+    <div class="control-group">
+        {{ form_start(form) }}
+        <label>{{ form_widget(form) }}</label>
+        {# {{ form_widget(form) }} #}
+        <input class="btn btn-info" type="submit" value="Сохранить" />
+        {{ form_end(form) }}
+    </div>
+    <hr>
+    <p>
+        <a class="btn btn-success" href="{{ path('category_index') }}">К списку категорий</a>
+    </p>
+{% endblock %}

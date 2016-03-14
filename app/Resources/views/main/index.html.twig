@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% block path %}{% endblock %}
+<ul class="list-group">
+    <li class="list-group-item">
+        <a href="{{ path('post_index') }}">К списку статей</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{{ path('post_new') }}">Создать статью</a>
+    </li>
+</ul>
+
+<ul>
+    <li class="list-group-item">
+        <a href="{{ path('category_index') }}">К списку категорий</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{{ path('category_new') }}">Создать категорию</a>
+    </li>
+</ul>
+{% endblock %}

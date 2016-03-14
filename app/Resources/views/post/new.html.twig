@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block path %}<a class="btn btn-primary" href="{{ path('post_index') }}">К списку статей</a>{% endblock %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+    <h1>Создать статью</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input class="btn btn-info" type="submit" value="Сохранить" />
+    {{ form_end(form) }}
+
+{% endblock %}

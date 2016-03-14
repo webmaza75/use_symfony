@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Просмотр статьи <small>({{ post.id }})</small></h1>
+
+    <h3>{{ post.title }}</h3>
+
+    <p>{{ post.category }}</p>
+    <p>Опубликовано:
+        {% if post.published %}
+            <span class="text-success glyphicon glyphicon-ok"></span>
+        {% else %}
+            <span class="text-danger glyphicon glyphicon-minus"></span>
+        {% endif %}
+    </p>
+    <p>Дата создания:
+        {% if post.created %}{{ post.created|date('d-m-Y H:i') }}{% endif %}
+    </p>
+    <p>Дата редакции:
+        {% if post.updated %}{{ post.updated|date('d-m-Y H:i') }}{% endif %}
+    </p>
+    <blockquote>{{ post.description }}</blockquote>
+    <div class="list-group-item-info">{{ post.text }}</div>
+    <p>
+        {{ form_start(delete_form) }}
+        <a class="btn btn-info" href="{{ path('post_edit', { 'id': post.id }) }}">Редактировать</a>
+        <input class="btn btn-danger" type="submit" value="Удалить">
+        {{ form_end(delete_form) }}
+    </p>
+    <hr>
+    <p>
+        <a class="btn btn-success" href="{{ path('post_index') }}">К статьям</a>
+    </p>
+
+{% endblock %}

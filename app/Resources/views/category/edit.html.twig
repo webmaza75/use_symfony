@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+
+{% block path %}<a class="btn btn-primary" href="{{ path('category_new') }}">Создать новую категорию</a>{% endblock %}
+{% block body %}
+    <h1>Редактирование категорий</h1>
+
+    <table>
+        <tr>
+            <td class="valign">{{ form_start(edit_form) }}
+                <label>{{ form_widget(edit_form) }}</label>
+                <input class="btn btn-info" type="submit" value="Сохранить" />
+                {# {{ form_widget(edit_form) }} #}
+
+                {{ form_end(edit_form) }}
+            </td>
+            <td class="valign">
+                {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Удалить">
+                {{ form_end(delete_form) }}
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <p>
+        <a class="btn btn-success" href="{{ path('category_index') }}">К списку категорий</a>
+    </p>
+
+{% endblock %}

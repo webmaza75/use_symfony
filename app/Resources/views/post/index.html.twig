@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Список статей</h1>
+    {% if posts %}
+        {% for post in posts %}
+            <div class="blog-post">
+                <h6 class="blog-post-title">
+                    <a href="{{ path('post_show', { 'id': post.id }) }}">
+                        {{ post.title }}
+                    </a>
+                </h6>
+                <p class="blog-post-meta">
+                    {{ post.created | date('d.m.Y')  }}
+                    {% if post.published %}
+                        <span class="text-success glyphicon glyphicon-ok success"></span>
+                    {% else %}
+                        <span class="text-danger glyphicon glyphicon-minus"></span>
+                    {% endif %}
+                </p>
+                <blockquote>{{ post.description }}</blockquote>
+                <p>{{ post.category }}</p>
+                <p>
+                    <a class="btn btn-sm btn-success" href="{{ path('post_show', { 'id': post.id }) }}">Просмотр</a>
+                    <a class="btn btn-sm btn-info" href="{{ path('post_edit', { 'id': post.id }) }}">Редактировать</a>
+                </p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="alert alert-warning">Статьи отсутствуют. Добавьте статью:
+            <a class="btn btn-primary" href="{{ path('post_new') }}">Создать новую статью</a>
+        </p>
+    {% endif %}
+
+{% endblock %}

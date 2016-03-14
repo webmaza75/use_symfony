@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+    <h1>Редактирование статьи</h1>
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <input class="btn btn-info" type="submit" value="Сохранить" />
+    {{ form_end(edit_form) }}
+    <p>
+        {{ form_start(delete_form) }}
+        <input  class="btn btn-danger" type="submit" value="Удалить">
+        {{ form_end(delete_form) }}
+    </p>
+    <hr>
+    <p>
+        <a class="btn btn-success" href="{{ path('post_index') }}">К списку статей</a>
+        <a class="btn btn-success" href="{{ path('category_index') }}">К списку категорий</a>
+    </p>
+
+{% endblock %}
