@@ -28,9 +28,9 @@ class PostController extends Controller
 
         $posts = $em->getRepository('IrBlogBundle:Post')->findAll();
 
-        return $this->render('post/index.html.twig', array(
+        return $this->render('post/index.html.twig', [
             'posts' => $posts,
-        ));
+        ]);
     }
 
     /**
@@ -50,13 +50,13 @@ class PostController extends Controller
             $em->persist($post);
             $em->flush();
 
-            return $this->redirectToRoute('post_show', array('id' => $post->getId()));
+            return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
         }
 
-        return $this->render('post/new.html.twig', array(
+        return $this->render('post/new.html.twig', [
             'post' => $post,
             'form' => $form->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -69,10 +69,10 @@ class PostController extends Controller
     {
         $deleteForm = $this->createDeleteForm($post);
 
-        return $this->render('post/show.html.twig', array(
+        return $this->render('post/show.html.twig', [
             'post' => $post,
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -92,14 +92,14 @@ class PostController extends Controller
             $em->persist($post);
             $em->flush();
 
-            return $this->redirectToRoute('post_show', array('id' => $post->getId()));
+            return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
         }
 
-        return $this->render('post/edit.html.twig', array(
+        return $this->render('post/edit.html.twig', [
             'post' => $post,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -132,7 +132,7 @@ class PostController extends Controller
     private function createDeleteForm(Post $post)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('post_delete', array('id' => $post->getId())))
+            ->setAction($this->generateUrl('post_delete', ['id' => $post->getId()]))
             ->setMethod('DELETE')
             ->getForm()
         ;
